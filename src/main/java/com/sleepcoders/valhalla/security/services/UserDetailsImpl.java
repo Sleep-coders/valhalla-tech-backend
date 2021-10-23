@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.sleepcoders.valhalla.models.User;
+import com.sleepcoders.valhalla.models.users.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserDetailsImpl implements UserDetails {

@@ -1,6 +1,6 @@
 package com.sleepcoders.valhalla.security.services;
 
-import com.sleepcoders.valhalla.models.User;
+import com.sleepcoders.valhalla.models.users.User;
 import com.sleepcoders.valhalla.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

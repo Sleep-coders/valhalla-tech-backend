@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.sleepcoders.valhalla.models.ERole;
-import com.sleepcoders.valhalla.models.Role;
-import com.sleepcoders.valhalla.models.User;
+import com.sleepcoders.valhalla.models.users.ERole;
+import com.sleepcoders.valhalla.models.users.Role;
+import com.sleepcoders.valhalla.models.users.User;
 import com.sleepcoders.valhalla.payload.request.LoginRequest;
 import com.sleepcoders.valhalla.payload.request.SignupRequest;
 import com.sleepcoders.valhalla.payload.response.JwtResponse;

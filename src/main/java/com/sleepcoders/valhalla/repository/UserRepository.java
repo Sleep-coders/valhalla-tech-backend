@@ -2,7 +2,7 @@ package com.sleepcoders.valhalla.repository;
 
 import java.util.Optional;
 
-import com.sleepcoders.valhalla.models.User;
+import com.sleepcoders.valhalla.models.users.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

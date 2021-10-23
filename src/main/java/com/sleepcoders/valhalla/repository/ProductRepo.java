@@ -1,4 +1,4 @@
-package com.sleepcoders.valhalla.repos;
+package com.sleepcoders.valhalla.repository;
 
 import com.sleepcoders.valhalla.models.products.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
