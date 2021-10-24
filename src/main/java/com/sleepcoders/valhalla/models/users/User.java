@@ -42,8 +42,6 @@ public class User {
     private String imageUrl;
 
     @ManyToMany
-    @JoinTable(name = "user_product_list",
-    )
     private List<Product> productList;
 
     @OneToOne
