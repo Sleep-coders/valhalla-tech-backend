@@ -1,6 +1,6 @@
 package com.sleepcoders.valhalla.models.products;
 
-import com.sleepcoders.valhalla.models.reviews.Review;
+import com.sleepcoders.valhalla.models.reviews.ProductReview;
 import com.sleepcoders.valhalla.models.users.User;
 
 import javax.persistence.*;
@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "product_type", discriminatorType = DiscriminatorType.STRING)
-public class Product {
+public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +32,9 @@ public class Product {
     private String yearOfProduction;
 
     @OneToMany(mappedBy = "product")
-    private List<Review> reviewList;
+    private Set<ProductReview> productReviewList;
 
-    @ManyToMany
-    @JoinColumn(name = "user_id")
+    @ManyToMany(mappedBy = "productList")
     private Set<User> users;
 
     @ElementCollection
@@ -92,12 +91,12 @@ public class Product {
         this.yearOfProduction = yearOfProduction;
     }
 
-    public List<Review> getReviewList() {
-        return reviewList;
+    public Set<ProductReview> getReviewList() {
+        return productReviewList;
     }
 
-    public void setReviewList(List<Review> reviewList) {
-        this.reviewList = reviewList;
+    public void setReviewList(Set<ProductReview> productReviewList) {
+        this.productReviewList = productReviewList;
     }
 
     public boolean isInStock() {

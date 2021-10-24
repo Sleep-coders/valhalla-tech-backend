@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("homeapplainces-washingmachine")
-public class WashingMachine extends HomeApplainces {
+public class WashingMachine extends HomeAppliances {
     private String capacity;
 
     public WashingMachine() {

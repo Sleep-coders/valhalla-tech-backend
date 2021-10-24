@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("homeapplainces-vacuummachine")
-public class VacuumMachine extends HomeApplainces {
+public class VacuumMachine extends HomeAppliances {
     private String airFlow;
     private String noiseLevel;
 
