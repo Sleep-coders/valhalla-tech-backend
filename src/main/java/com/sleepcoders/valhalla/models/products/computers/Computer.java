@@ -2,7 +2,6 @@ package com.sleepcoders.valhalla.models.products.computers;
 import com.sleepcoders.valhalla.models.products.Product;
 
 import javax.persistence.Entity;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

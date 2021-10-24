@@ -1,5 +1,7 @@
 package com.sleepcoders.valhalla.models.credit_card;
 
+import com.sleepcoders.valhalla.models.users.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,14 +20,18 @@ public class CreditCard {
 
     private String creditCardOwnerName;
 
+    @OneToOne(mappedBy = "creditCard")
+    private User user;
+
     public CreditCard() {
     }
 
-    public CreditCard(Long creditCardNumber, String cvv, String expDate, String creditCardOwnerName) {
+    public CreditCard(Long creditCardNumber, String cvv, String expDate, String creditCardOwnerName, User user) {
         this.creditCardNumber = creditCardNumber;
         this.cvv = cvv;
         this.expDate = expDate;
         this.creditCardOwnerName = creditCardOwnerName;
+        this.user = user;
     }
 
     public Long getCreditCardNumber() {
@@ -66,5 +72,13 @@ public class CreditCard {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -1,20 +1,29 @@
 package com.sleepcoders.valhalla.models.reviews;
 
 import com.sleepcoders.valhalla.models.products.Product;
+import com.sleepcoders.valhalla.models.relations.ProductReviewKey;
+import com.sleepcoders.valhalla.models.users.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Review {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class ProductReview {
+
+    @EmbeddedId
+    ProductReviewKey id;
 
     @ManyToOne
+    @MapsId("userId")
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @MapsId("productId")
     @JoinColumn(name = "product_id")
     private Product product;
+
+    private String title;
 
     private String reviewContent;
 
@@ -22,11 +31,12 @@ public class Review {
 
     private LocalDateTime createdAt;
 
-    public Review() {
+    public ProductReview() {
     }
 
-    public Review(Product product, String reviewContent, double rating) {
+    public ProductReview(Product product, String title, String reviewContent, double rating) {
         this.product = product;
+        this.title = title;
         this.reviewContent = reviewContent;
         this.rating = rating;
         this.createdAt = LocalDateTime.now();
@@ -65,11 +75,19 @@ public class Review {
         this.createdAt = createdAt;
     }
 
-    public Long getId() {
+    public ProductReviewKey getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ProductReviewKey id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
