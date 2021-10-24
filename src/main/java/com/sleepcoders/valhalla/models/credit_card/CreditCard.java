@@ -5,7 +5,7 @@ import com.sleepcoders.valhalla.models.users.User;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "credit-card")
+@Table(name = "credit_card")
 public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

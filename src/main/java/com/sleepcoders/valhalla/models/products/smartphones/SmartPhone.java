@@ -5,6 +5,7 @@ import com.sleepcoders.valhalla.models.products.computers.Computer;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("smartphone")
@@ -15,8 +16,8 @@ public class SmartPhone extends Computer {
     public SmartPhone() {
     }
 
-    public SmartPhone(String name, String description, String brand, String color, ArrayList<String> imageUrlList, double price, String cpu, String ram, String storage, String gpu, String powerConsumption, String camera) {
-        super(name, description, brand, color, imageUrlList, price, cpu, ram, storage, gpu, powerConsumption);
+    public SmartPhone(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu, String camera) {
+        super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList, cpu, ram, storage, gpu);
         this.camera = camera;
     }
 
