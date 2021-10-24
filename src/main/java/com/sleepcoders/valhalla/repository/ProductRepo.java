@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProductRepo extends JpaRepository<Product , Long> {
-    @Query(value="select * from product where product_type = ?1",nativeQuery = true)
+public interface ProductRepo extends JpaRepository<Product, Long> {
+    @Query(value = "select * from product where product_type = ?1", nativeQuery = true)
     Optional<List<Product>> findAllByProductType(String type);
 }

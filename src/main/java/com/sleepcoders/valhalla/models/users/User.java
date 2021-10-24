@@ -1,6 +1,11 @@
 package com.sleepcoders.valhalla.models.users;
 
+import com.sleepcoders.valhalla.models.credit_card.CreditCard;
+import com.sleepcoders.valhalla.models.products.Product;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -36,6 +41,14 @@ public class User {
     private String lastName;
     private String imageUrl;
 
+    @ManyToMany
+    @JoinTable(name = "user_product_list",
+    )
+    private List<Product> productList;
+
+    @OneToOne
+    @JoinColumn(name = "credit_card_id")
+    private CreditCard creditCard;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
@@ -64,6 +77,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.imageUrl = imageUrl;
+        this.productList = new ArrayList<>();
     }
 
     public String getImageUrl() {

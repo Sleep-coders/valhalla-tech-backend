@@ -1,9 +1,12 @@
 package com.sleepcoders.valhalla.models.products;
 
 import com.sleepcoders.valhalla.models.reviews.Review;
+import com.sleepcoders.valhalla.models.users.User;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -31,6 +34,10 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Review> reviewList;
 
+    @ManyToMany
+    @JoinColumn(name = "user_id")
+    private Set<User> users;
+
     @ElementCollection
     @CollectionTable(name = "products_images_url", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "product_img_url")
@@ -54,6 +61,7 @@ public class Product {
         this.powerConsumption = powerConsumption;
         this.yearOfProduction = yearOfProduction;
         this.imageUrlList = imageUrlList;
+        users = new HashSet<>();
     }
 
 
@@ -175,5 +183,13 @@ public class Product {
 
     public void setPowerConsumption(String powerConsumption) {
         this.powerConsumption = powerConsumption;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
