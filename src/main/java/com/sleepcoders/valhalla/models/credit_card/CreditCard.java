@@ -3,7 +3,7 @@ package com.sleepcoders.valhalla.models.credit_card;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "credit-card")
+@Table(name = "credit_card")
 public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
