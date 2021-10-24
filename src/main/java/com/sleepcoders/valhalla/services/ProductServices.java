@@ -5,6 +5,7 @@ import com.sleepcoders.valhalla.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class ProductServices {
         this.productRepo = productRepo;
     }
 
-    public ResponseEntity<?> getAllProduct(String Authorization) {
+    public ResponseEntity<List<Product>> getAllProduct() {
         List<Product> productList = productRepo.findAll();
         return ResponseEntity.ok(productList);
     }
@@ -38,49 +39,82 @@ public class ProductServices {
         productRepo.save(product);
     }
 
-    public ResponseEntity<List<Product>> getProductsByProductType(String productType){
-        List<Product> productList = productRepo.findAllByProductType(productType).orElse(new ArrayList<>());
+///////////////////=======================================================/////////////////////////////////////////
+    /////////////////////////===================productType filtering by regex===============================////////////////////////////
+
+    public ResponseEntity<List<Product>> getProductsByProductType(String regex){
+        List<Product> productList = productRepo.findAllByProductTypeMatchesRegex(regex).orElse(new ArrayList<>());
+        return ResponseEntity.ok(productList);
+    }
+    ////////////////////========================rate sorting==========================////////////////////////////
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRatingAsc(String regex) {
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.ASC, "rating")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRatingAsc(String productType) {
-        List<Product> productList = productRepo.findAllByProductType(productType, Sort.by(Sort.Direction.ASC, "rating")).orElse(new ArrayList<>());
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRatingDesc(String regex) {
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.DESC, "rating")).orElse(new ArrayList<>());
+        return ResponseEntity.ok(productList);
+    }
+    ////////////////////========================model sorting==========================////////////////////////////
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndModelAcs(String regex) {
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.ASC, "model")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRatingDesc(String productType) {
-        List<Product> productList = productRepo.findAllByProductType(productType, Sort.by(Sort.Direction.DESC, "rating")).orElse(new ArrayList<>());
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndModelDesc(String regex) {
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.DESC, "model")).orElse(new ArrayList<>());
+        return ResponseEntity.ok(productList);
+    }
+    ////////////////////========================name sorting==========================////////////////////////////
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndNameAcs(String regex) {
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.ASC, "name")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndModelAcs(String productType) {
-        List<Product> productList = productRepo.findAllByProductType(productType, Sort.by(Sort.Direction.ASC, "model")).orElse(new ArrayList<>());
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndNameDesc(String regex) {
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.DESC, "name")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndModelDesc(String productType) {
-        List<Product> productList = productRepo.findAllByProductType(productType, Sort.by(Sort.Direction.DESC, "model")).orElse(new ArrayList<>());
+////////////////////========================price sorting==========================////////////////////////////
+
+    public ResponseEntity<List<Product>> getProductByProductTypeAndPriceAcs(String regex, double min, double max) {
+        List<Product> productList = productRepo.findAllByProductType_AndPrice(regex, min, max, Sort.by(Sort.Direction.ASC, "price")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndNameAcs(String productType) {
-        List<Product> productList = productRepo.findAllByProductType(productType, Sort.by(Sort.Direction.ASC, "name")).orElse(new ArrayList<>());
+    public ResponseEntity<List<Product>> getProductByProductTypeAndPriceDesc(String regex, double min, double max) {
+        List<Product> productList = productRepo.findAllByProductType_AndPrice(regex, min, max, Sort.by(Sort.Direction.DESC, "price")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndNameDesc(String productType) {
-        List<Product> productList = productRepo.findAllByProductType(productType, Sort.by(Sort.Direction.DESC, "name")).orElse(new ArrayList<>());
+    ////////////////////========================yearOfProduction sorting==========================////////////////////////////
+
+    public ResponseEntity<List<Product>> getProductByProductTypeAndYearOfProductionAcs(String regex){
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.ASC,"yearOfProduction")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
-
-    public ResponseEntity<List<Product>> getProductByProductTypeAndPriceAcs(String productType, double min, double max) {
-        List<Product> productList = productRepo.findAllByProductType_AndPrice(productType, min, max, Sort.by(Sort.Direction.ASC, "price")).orElse(new ArrayList<>());
+    public ResponseEntity<List<Product>> getProductByProductTypeAndYearOfProductionDesc(String regex){
+        List<Product> productList = productRepo.findAllByProductType(regex, Sort.by(Sort.Direction.DESC,"yearOfProduction")).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
-
-    public ResponseEntity<List<Product>> getProductByProductTypeAndPriceDesc(String productType, double min, double max) {
-        List<Product> productList = productRepo.findAllByProductType_AndPrice(productType, min, max, Sort.by(Sort.Direction.DESC, "price")).orElse(new ArrayList<>());
+    ////////////////////========================rating from value==========================////////////////////////////
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRating(String regex , double rating){
+        List<Product> productList = productRepo.findAllByProductTypeMatchesRegexAndRating(regex,rating).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
+    }
+    ////////////////////========================in stock filtering==========================////////////////////////////
+
+    public ResponseEntity<List<Product>> getAllProductByProductTypeAndInStock(String regex){
+        List<Product> productList = productRepo.findAllByProductTypeMatchesRegexAndInStock(regex).orElse(new ArrayList<>());
+        return ResponseEntity.ok(productList);
+    }
+    /////////////////////////========================searchBar filtering=================================///////////////////////////////
+    public ResponseEntity<List<Product>> getAllProductByKeyWord(String keyWord){
+        List<Product> productList = productRepo.findAllBySearchKeyWord(keyWord).orElse(new ArrayList<>());
+        return ResponseEntity.ok(productList);
+
     }
 
 }

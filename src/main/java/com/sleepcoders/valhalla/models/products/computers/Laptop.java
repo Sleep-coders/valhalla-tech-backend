@@ -15,7 +15,7 @@ public class Laptop extends Computer {
 
     }
 
-    public Laptop(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu, String panelSize) {
+    public Laptop(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu, String panelSize) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList, cpu, ram, storage, gpu);
         this.panelSize = panelSize;
     }

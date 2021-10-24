@@ -15,7 +15,7 @@ public class TV extends Entertainment{
     public TV() {
     }
 
-    public TV(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList, String panelSize, String panelType, String panelResolution, boolean smart) {
+    public TV(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, String panelSize, String panelType, String panelResolution, boolean smart) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList);
         this.panelSize = panelSize;
         this.panelType = panelType;

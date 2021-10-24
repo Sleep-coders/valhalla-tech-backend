@@ -16,7 +16,7 @@ public class SmartPhone extends Computer {
     public SmartPhone() {
     }
 
-    public SmartPhone(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu, String camera) {
+    public SmartPhone(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu, String camera) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList, cpu, ram, storage, gpu);
         this.camera = camera;
     }

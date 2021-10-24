@@ -64,12 +64,12 @@ public class AuthController {
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
-
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                roles));
+                userDetails.getFirstName(),userDetails.getLastName(),
+                userDetails.getImageUrl(),userDetails.getBalance(),roles));
     }
 
     @PostMapping("/signup")
