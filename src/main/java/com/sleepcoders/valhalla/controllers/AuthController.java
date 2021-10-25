@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.sleepcoders.valhalla.models.dataStorage.DataStorage;
 import com.sleepcoders.valhalla.models.users.ERole;
 import com.sleepcoders.valhalla.models.users.Role;
 import com.sleepcoders.valhalla.models.users.User;
@@ -14,6 +15,7 @@ import com.sleepcoders.valhalla.payload.request.LoginRequest;
 import com.sleepcoders.valhalla.payload.request.SignupRequest;
 import com.sleepcoders.valhalla.payload.response.JwtResponse;
 import com.sleepcoders.valhalla.payload.response.MessageResponse;
+import com.sleepcoders.valhalla.repository.DataStorageRepo;
 import com.sleepcoders.valhalla.repository.RoleRepository;
 import com.sleepcoders.valhalla.repository.UserRepository;
 import com.sleepcoders.valhalla.security.jwt.JwtUtils;
@@ -36,6 +38,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+    DataStorage dataStorage = new DataStorage();
+
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -50,6 +54,9 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    DataStorageRepo dataStorageRepo;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -126,6 +133,9 @@ public class AuthController {
 
         user.setRoles(roles);
         userRepository.save(user);
+
+        dataStorage.setCountOfUsers(1);
+        dataStorageRepo.save(dataStorage);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }

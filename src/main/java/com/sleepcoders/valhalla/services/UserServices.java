@@ -1,8 +1,10 @@
 package com.sleepcoders.valhalla.services;
 
+import com.sleepcoders.valhalla.models.dataStorage.DataStorage;
 import com.sleepcoders.valhalla.models.products.Product;
 import com.sleepcoders.valhalla.models.user_purchases_request.PurchaseRequest;
 import com.sleepcoders.valhalla.models.users.User;
+import com.sleepcoders.valhalla.repository.DataStorageRepo;
 import com.sleepcoders.valhalla.repository.ProductRepo;
 import com.sleepcoders.valhalla.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +17,16 @@ import java.util.List;
 @Service
 public class UserServices {
 
+    private final DataStorageRepo dataStorageRepo;
     private final UserRepository userRepository;
     private final ProductRepo productRepo;
 
     @Autowired
-    public UserServices(UserRepository userRepository, ProductRepo productRepo) {
+    public UserServices(DataStorageRepo dataStorageRepo, UserRepository userRepository, ProductRepo productRepo) {
+        this.dataStorageRepo = dataStorageRepo;
         this.userRepository = userRepository;
         this.productRepo = productRepo;
+
     }
 
 
@@ -53,8 +58,13 @@ public class UserServices {
         if (user.getBalance() < totalPrice)
             return ResponseEntity.badRequest().body(new ArrayList<>());
 
+
+
         productList.addAll(user.getProductList());
 
+        DataStorage dataStorage = dataStorageRepo.getById(1L);
+        dataStorage.setTotalOfSales(totalPrice);
+        dataStorageRepo.save(dataStorage);
         user.setProductList(productList);
         return ResponseEntity.ok(productList);
     }
@@ -70,4 +80,6 @@ public class UserServices {
     public void updateUser(User user) {
         userRepository.save(user);
     }
+
+
 }
