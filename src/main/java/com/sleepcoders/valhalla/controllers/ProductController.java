@@ -1,5 +1,6 @@
 package com.sleepcoders.valhalla.controllers;
 
+
 import com.sleepcoders.valhalla.models.products.Product;
 import com.sleepcoders.valhalla.models.products.computers.Desktop;
 import com.sleepcoders.valhalla.models.products.computers.Laptop;
@@ -9,6 +10,7 @@ import com.sleepcoders.valhalla.models.products.homeappliances.Refrigerator;
 import com.sleepcoders.valhalla.models.products.homeappliances.VacuumMachine;
 import com.sleepcoders.valhalla.models.products.homeappliances.WashingMachine;
 import com.sleepcoders.valhalla.models.products.smartphones.SmartPhone;
+import com.sleepcoders.valhalla.repository.ProductRepo;
 import com.sleepcoders.valhalla.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +24,17 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
+
     private final ProductServices productServices;
+    private final ProductRepo productRepo;
+
 
     @Autowired
-    public ProductController(ProductServices productServices) {
+    public ProductController(ProductServices productServices, ProductRepo productRepo) {
         this.productServices = productServices;
+        this.productRepo = productRepo;
     }
+
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")

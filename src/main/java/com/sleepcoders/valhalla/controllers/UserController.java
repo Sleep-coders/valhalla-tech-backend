@@ -1,7 +1,9 @@
 package com.sleepcoders.valhalla.controllers;
 
+import com.sleepcoders.valhalla.models.dataStorage.DataStorage;
 import com.sleepcoders.valhalla.models.user_purchases_request.PurchaseRequest;
 import com.sleepcoders.valhalla.models.users.User;
+import com.sleepcoders.valhalla.repository.DataStorageRepo;
 import com.sleepcoders.valhalla.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +18,13 @@ import java.util.List;
 public class UserController {
 
     private final UserServices userServices;
-
+    private final DataStorage dataStorage;
+    private final DataStorageRepo dataStorageRepo;
     @Autowired
-    public UserController(UserServices userServices) {
+    public UserController(UserServices userServices, DataStorageRepo dataStorageRepo) {
         this.userServices = userServices;
+        dataStorage = dataStorageRepo.getById(1L);
+        this.dataStorageRepo = dataStorageRepo;
     }
 
     @GetMapping("/{userId}")
@@ -43,7 +48,9 @@ public class UserController {
     @DeleteMapping("/{userId}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public void deleteUser(@PathVariable Long userId) {
+
         userServices.deleteUser(userId);
+        dataStorage.setCountOfUsersDec(1);
     }
 
     @PutMapping
@@ -51,5 +58,6 @@ public class UserController {
     public void updateUser(@RequestBody User user) {
         userServices.updateUser(user);
     }
+
 
 }
