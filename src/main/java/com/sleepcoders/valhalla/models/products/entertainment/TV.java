@@ -22,4 +22,36 @@ public class TV extends Entertainment{
         this.panelResolution = panelResolution;
         this.smart = smart;
     }
+
+    public String getPanelSize() {
+        return panelSize;
+    }
+
+    public void setPanelSize(String panelSize) {
+        this.panelSize = panelSize;
+    }
+
+    public String getPanelType() {
+        return panelType;
+    }
+
+    public void setPanelType(String panelType) {
+        this.panelType = panelType;
+    }
+
+    public String getPanelResolution() {
+        return panelResolution;
+    }
+
+    public void setPanelResolution(String panelResolution) {
+        this.panelResolution = panelResolution;
+    }
+
+    public boolean isSmart() {
+        return smart;
+    }
+
+    public void setSmart(boolean smart) {
+        this.smart = smart;
+    }
 }

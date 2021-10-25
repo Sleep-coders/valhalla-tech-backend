@@ -19,4 +19,12 @@ public class Laptop extends Computer {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList, cpu, ram, storage, gpu);
         this.panelSize = panelSize;
     }
+
+    public String getPanelSize() {
+        return panelSize;
+    }
+
+    public void setPanelSize(String panelSize) {
+        this.panelSize = panelSize;
+    }
 }

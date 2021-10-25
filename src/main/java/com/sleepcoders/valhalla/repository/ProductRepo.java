@@ -13,26 +13,24 @@ import java.util.Optional;
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Long> {
 
-    @Modifying
-    @Query(value = "SELECT * FROM product where product_type regexp ?1", nativeQuery = true)
-    Optional<List<Product>> findAllByProductType(String productType, Sort sorter);
+    //We can use contains instead of regex.(give it a try!)
+//    @Modifying
+    @Query(value = "SELECT * FROM product where product_type contains ?1", nativeQuery = true)
+    Optional<List<Product>> findAllByProductType(String productType);
 
-    @Modifying
-    @Query(value = "SELECT * FROM product where product_type regexp ?1 and(price >= ?2 and price >= ?3)", nativeQuery = true)
-    Optional<List<Product>> findAllByProductType_AndPrice(String productType, double min, double max, Sort price);
+//    @Modifying
+    @Query(value = "SELECT * FROM product where product_type contains ?1 and(price >= ?2 and price <= ?3)", nativeQuery = true)
+    Optional<List<Product>> findAllByProductType_AndPrice(String productType, double min, double max);
 
-    @Modifying
-    @Query(value = "SELECT * FROM product where product_type regexp ?1", nativeQuery = true)
-    Optional<List<Product>> findAllByProductTypeMatchesRegex(String regex);
+//    @Modifying
+    @Query(value = "SELECT * FROM product where product_type contains ?1 and rating >= ?2", nativeQuery = true)
+    Optional<List<Product>> findAllByProductTypeAndRating(String productType, double rating);
 
-    @Modifying
-    @Query(value = "SELECT * FROM product where product_type regexp ?1 and rating >= ?2", nativeQuery = true)
-    Optional<List<Product>> findAllByProductTypeMatchesRegexAndRating(String regex, double rating);
+//    @Modifying
+    @Query(value = "SELECT * FROM product where product_type contains ?1 and quantity > 0", nativeQuery = true)
+    Optional<List<Product>> findAllByProductTypeAndInStock(String productType);
 
-    @Modifying
-    @Query(value = "SELECT * FROM product where product_type regexp ?1 and quantity > 0", nativeQuery = true)
-    Optional<List<Product>> findAllByProductTypeMatchesRegexAndInStock(String regex);
-    @Modifying
+//    @Modifying
     @Query(value = "SELECT * FROM product where name contains ?1 or description contains ?1 or brand contains ?1 or model contains ?1", nativeQuery = true)
     Optional<List<Product>> findAllBySearchKeyWord(String keyWord);
 

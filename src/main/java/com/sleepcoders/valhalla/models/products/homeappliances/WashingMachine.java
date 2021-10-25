@@ -16,4 +16,12 @@ public class WashingMachine extends HomeAppliances {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList);
         this.capacity = capacity;
     }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
+    }
 }

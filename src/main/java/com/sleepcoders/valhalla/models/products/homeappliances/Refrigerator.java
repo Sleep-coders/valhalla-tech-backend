@@ -25,4 +25,44 @@ public class Refrigerator extends HomeAppliances {
         this.waterCooler = waterCooler;
         this.size = size;
     }
+
+    public int getDoorNumber() {
+        return doorNumber;
+    }
+
+    public void setDoorNumber(int doorNumber) {
+        this.doorNumber = doorNumber;
+    }
+
+    public int getDrawerNumber() {
+        return drawerNumber;
+    }
+
+    public void setDrawerNumber(int drawerNumber) {
+        this.drawerNumber = drawerNumber;
+    }
+
+    public boolean isIceCrusher() {
+        return iceCrusher;
+    }
+
+    public void setIceCrusher(boolean iceCrusher) {
+        this.iceCrusher = iceCrusher;
+    }
+
+    public boolean isWaterCooler() {
+        return waterCooler;
+    }
+
+    public void setWaterCooler(boolean waterCooler) {
+        this.waterCooler = waterCooler;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 }
