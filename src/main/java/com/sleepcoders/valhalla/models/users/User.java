@@ -41,6 +41,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String imageUrl;
+    private double balance;
 
     @ManyToMany
     @JoinTable(name = "user_product_list",
@@ -72,6 +73,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.imageUrl = imageUrl;
+        this.balance = 0;
         this.productList = new ArrayList<>();
         this.productReviews = new HashSet<>();
     }
@@ -154,5 +156,13 @@ public class User {
 
     public void setProductReviews(Set<ProductReview> productReviews) {
         this.productReviews = productReviews;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

@@ -29,7 +29,7 @@ public abstract class Product {
     private String brand;
     private String color;
     private String powerConsumption;
-    private String yearOfProduction;
+    private int yearOfProduction;
 
     @OneToMany(mappedBy = "product")
     private Set<ProductReview> productReviewList;
@@ -48,7 +48,7 @@ public abstract class Product {
     public Product() {
     }
 
-    public Product(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList) {
+    public Product(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList) {
         this.quantity = quantity;
         this.price = price;
         this.weight = weight;
@@ -83,11 +83,11 @@ public abstract class Product {
         this.model = model;
     }
 
-    public String getYearOfProduction() {
+    public int getYearOfProduction() {
         return yearOfProduction;
     }
 
-    public void setYearOfProduction(String yearOfProduction) {
+    public void setYearOfProduction(int yearOfProduction) {
         this.yearOfProduction = yearOfProduction;
     }
 
