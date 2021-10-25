@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("homeapplainces-refrigerator")
-public class Refrigerator extends HomeApplainces {
+public class Refrigerator extends HomeAppliances {
 
     private int doorNumber;
     private int drawerNumber;
@@ -17,12 +17,52 @@ public class Refrigerator extends HomeApplainces {
     public Refrigerator() {
     }
 
-    public Refrigerator(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList, int doorNumber, int drawerNumber, boolean iceCrusher, boolean waterCooler, String size) {
+    public Refrigerator(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, int doorNumber, int drawerNumber, boolean iceCrusher, boolean waterCooler, String size) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList);
         this.doorNumber = doorNumber;
         this.drawerNumber = drawerNumber;
         this.iceCrusher = iceCrusher;
         this.waterCooler = waterCooler;
+        this.size = size;
+    }
+
+    public int getDoorNumber() {
+        return doorNumber;
+    }
+
+    public void setDoorNumber(int doorNumber) {
+        this.doorNumber = doorNumber;
+    }
+
+    public int getDrawerNumber() {
+        return drawerNumber;
+    }
+
+    public void setDrawerNumber(int drawerNumber) {
+        this.drawerNumber = drawerNumber;
+    }
+
+    public boolean isIceCrusher() {
+        return iceCrusher;
+    }
+
+    public void setIceCrusher(boolean iceCrusher) {
+        this.iceCrusher = iceCrusher;
+    }
+
+    public boolean isWaterCooler() {
+        return waterCooler;
+    }
+
+    public void setWaterCooler(boolean waterCooler) {
+        this.waterCooler = waterCooler;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
         this.size = size;
     }
 }

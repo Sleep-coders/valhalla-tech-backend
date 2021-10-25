@@ -6,14 +6,22 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("homeapplainces-washingmachine")
-public class WashingMachine extends HomeApplainces {
+public class WashingMachine extends HomeAppliances {
     private String capacity;
 
     public WashingMachine() {
     }
 
-    public WashingMachine(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList, String capacity) {
+    public WashingMachine(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, String capacity) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList);
+        this.capacity = capacity;
+    }
+
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 }

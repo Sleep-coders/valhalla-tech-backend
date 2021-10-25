@@ -24,14 +24,24 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String password;
 
+    private String firstName;
+    private String lastName;
+    private String imageUrl;
+    private double balance;
+
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(Long id, String username, String email, String password,
-                           Collection<? extends GrantedAuthority> authorities) {
+                           Collection<? extends GrantedAuthority> authorities,String firstName,
+                           String lastName, String imageUrl , double balance) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.firstName=firstName;
+        this.lastName = lastName;
+        this.imageUrl = imageUrl;
+        this.balance = balance;
         this.authorities = authorities;
     }
 
@@ -45,7 +55,12 @@ public class UserDetailsImpl implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
-                authorities);
+                authorities,
+                user.getFirstName(),
+                user.getLastName(),
+                user.getImageUrl(),
+                user.getBalance()
+                );
     }
 
     @Override
@@ -99,5 +114,21 @@ public class UserDetailsImpl implements UserDetails {
             return false;
         UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public double getBalance() {
+        return balance;
     }
 }

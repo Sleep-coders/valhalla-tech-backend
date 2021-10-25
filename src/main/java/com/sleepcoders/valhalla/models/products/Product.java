@@ -1,14 +1,17 @@
 package com.sleepcoders.valhalla.models.products;
 
-import com.sleepcoders.valhalla.models.reviews.Review;
+import com.sleepcoders.valhalla.models.reviews.ProductReview;
+import com.sleepcoders.valhalla.models.users.User;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "product_type", discriminatorType = DiscriminatorType.STRING)
-public class Product {
+public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +29,13 @@ public class Product {
     private String brand;
     private String color;
     private String powerConsumption;
-    private String yearOfProduction;
+    private int yearOfProduction;
 
     @OneToMany(mappedBy = "product")
-    private List<Review> reviewList;
+    private Set<ProductReview> productReviewList;
+
+    @ManyToMany(mappedBy = "productList")
+    private Set<User> users;
 
     @ElementCollection
     @CollectionTable(name = "products_images_url", joinColumns = @JoinColumn(name = "id"))
@@ -42,7 +48,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, String yearOfProduction, List<String> imageUrlList) {
+    public Product(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList) {
         this.quantity = quantity;
         this.price = price;
         this.weight = weight;
@@ -54,6 +60,7 @@ public class Product {
         this.powerConsumption = powerConsumption;
         this.yearOfProduction = yearOfProduction;
         this.imageUrlList = imageUrlList;
+        users = new HashSet<>();
     }
 
 
@@ -76,20 +83,20 @@ public class Product {
         this.model = model;
     }
 
-    public String getYearOfProduction() {
+    public int getYearOfProduction() {
         return yearOfProduction;
     }
 
-    public void setYearOfProduction(String yearOfProduction) {
+    public void setYearOfProduction(int yearOfProduction) {
         this.yearOfProduction = yearOfProduction;
     }
 
-    public List<Review> getReviewList() {
-        return reviewList;
+    public Set<ProductReview> getReviewList() {
+        return productReviewList;
     }
 
-    public void setReviewList(List<Review> reviewList) {
-        this.reviewList = reviewList;
+    public void setReviewList(Set<ProductReview> productReviewList) {
+        this.productReviewList = productReviewList;
     }
 
     public boolean isInStock() {
@@ -175,5 +182,13 @@ public class Product {
 
     public void setPowerConsumption(String powerConsumption) {
         this.powerConsumption = powerConsumption;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
