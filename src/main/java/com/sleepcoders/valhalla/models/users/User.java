@@ -61,7 +61,7 @@ public class User {
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles;
 
     public User() {
     }
@@ -73,9 +73,10 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.imageUrl = imageUrl;
-        this.balance = 0;
+        this.balance = 0.0;
         this.productList = new ArrayList<>();
         this.productReviews = new HashSet<>();
+        this.roles = new HashSet<>();
     }
 
     public String getImageUrl() {
@@ -164,5 +165,13 @@ public class User {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public CreditCard getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
     }
 }

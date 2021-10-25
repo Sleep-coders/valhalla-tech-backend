@@ -1,5 +1,6 @@
 package com.sleepcoders.valhalla.models.products.smartphones;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.sleepcoders.valhalla.models.products.computers.Computer;
 
 import javax.persistence.DiscriminatorValue;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("smartphone")
+@JsonTypeName("smartphone")
 public class SmartPhone extends Computer {
 
     private String camera;

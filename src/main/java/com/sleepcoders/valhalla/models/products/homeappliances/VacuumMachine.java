@@ -18,4 +18,20 @@ public class VacuumMachine extends HomeAppliances {
         this.airFlow = airFlow;
         this.noiseLevel = noiseLevel;
     }
+
+    public String getAirFlow() {
+        return airFlow;
+    }
+
+    public void setAirFlow(String airFlow) {
+        this.airFlow = airFlow;
+    }
+
+    public String getNoiseLevel() {
+        return noiseLevel;
+    }
+
+    public void setNoiseLevel(String noiseLevel) {
+        this.noiseLevel = noiseLevel;
+    }
 }

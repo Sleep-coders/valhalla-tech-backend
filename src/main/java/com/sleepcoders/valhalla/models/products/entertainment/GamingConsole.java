@@ -36,4 +36,5 @@ public class GamingConsole extends Entertainment{
     public void setVrSupport(boolean vrSupport) {
         this.vrSupport = vrSupport;
     }
+
 }
