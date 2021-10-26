@@ -1,6 +1,7 @@
 package com.sleepcoders.valhalla.controllers;
 
 import com.sleepcoders.valhalla.models.dataStorage.DataStorage;
+import com.sleepcoders.valhalla.models.products.Product;
 import com.sleepcoders.valhalla.models.user_purchases_request.PurchaseRequest;
 import com.sleepcoders.valhalla.models.users.User;
 import com.sleepcoders.valhalla.repository.DataStorageRepo;
@@ -41,7 +42,7 @@ public class UserController {
 
     @PostMapping("/purchases")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<?> confirmUserPurchases(@RequestBody PurchaseRequest purchaseRequest){
+    public ResponseEntity<List<Product>> confirmUserPurchases(@RequestBody PurchaseRequest purchaseRequest){
         return userServices.confirmUserPurchases(purchaseRequest);
     }
 
