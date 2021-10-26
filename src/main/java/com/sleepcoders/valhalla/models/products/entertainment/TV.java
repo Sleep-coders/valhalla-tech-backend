@@ -1,11 +1,14 @@
 package com.sleepcoders.valhalla.models.products.entertainment;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
 @DiscriminatorValue("entertainment-tv")
+@JsonTypeName("tv")
 public class TV extends Entertainment{
     private String panelSize;
     private String panelType;

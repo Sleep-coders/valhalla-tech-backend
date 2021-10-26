@@ -2,14 +2,14 @@ package com.sleepcoders.valhalla.controllers;
 
 
 import com.sleepcoders.valhalla.models.products.Product;
-import com.sleepcoders.valhalla.models.products.computers.Desktop;
-import com.sleepcoders.valhalla.models.products.computers.Laptop;
-import com.sleepcoders.valhalla.models.products.entertainment.GamingConsole;
-import com.sleepcoders.valhalla.models.products.entertainment.TV;
-import com.sleepcoders.valhalla.models.products.homeappliances.Refrigerator;
-import com.sleepcoders.valhalla.models.products.homeappliances.VacuumMachine;
-import com.sleepcoders.valhalla.models.products.homeappliances.WashingMachine;
-import com.sleepcoders.valhalla.models.products.smartphones.SmartPhone;
+//import com.sleepcoders.valhalla.models.products.computers.Desktop;
+//import com.sleepcoders.valhalla.models.products.computers.Laptop;
+//import com.sleepcoders.valhalla.models.products.entertainment.GamingConsole;
+//import com.sleepcoders.valhalla.models.products.entertainment.TV;
+//import com.sleepcoders.valhalla.models.products.homeappliances.Refrigerator;
+//import com.sleepcoders.valhalla.models.products.homeappliances.VacuumMachine;
+//import com.sleepcoders.valhalla.models.products.homeappliances.WashingMachine;
+//import com.sleepcoders.valhalla.models.products.smartphones.SmartPhone;
 import com.sleepcoders.valhalla.repository.ProductRepo;
 import com.sleepcoders.valhalla.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,63 +49,71 @@ public class ProductController {
     }
 
     ///////////////////////==============Different Products Endpoints============///////////////
-    @PostMapping("/laptop/{productType}")
+
+    @PostMapping("/{productType}")
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Laptop laptop, @PathVariable String productType) {
-        productServices.addNewProduct(laptop);
+    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Product product, @PathVariable String productType) {
+        productServices.addNewProduct(product);
         return productServices.getProductsByProductType(productType);
     }
 
-    @PostMapping("/desktop/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Desktop desktop, @PathVariable String productType) {
-        productServices.addNewProduct(desktop);
-        return productServices.getProductsByProductType(productType);
-    }
-
-
-    @PostMapping("/gamingConsole/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody GamingConsole gamingConsole, @PathVariable String productType) {
-        productServices.addNewProduct(gamingConsole);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PostMapping("/tv/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody TV tv, @PathVariable String productType) {
-        productServices.addNewProduct(tv);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PostMapping("/refrigerator/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Refrigerator refrigerator, @PathVariable String productType) {
-        productServices.addNewProduct(refrigerator);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PostMapping("/vacuumMachine/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody VacuumMachine vacuumMachine, @PathVariable String productType) {
-        productServices.addNewProduct(vacuumMachine);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PostMapping("/washingMachine/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody WashingMachine washingMachine, @PathVariable String productType) {
-        productServices.addNewProduct(washingMachine);
-        return productServices.getProductsByProductType(productType);
-    }
-
-
-    @PostMapping("/smartPhone/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody SmartPhone smartPhone, @PathVariable String productType) {
-        productServices.addNewProduct(smartPhone);
-        return productServices.getProductsByProductType(productType);
-    }
+//    @PostMapping("/laptop/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Laptop laptop, @PathVariable String productType) {
+//        productServices.addNewProduct(laptop);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PostMapping("/desktop/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Desktop desktop, @PathVariable String productType) {
+//        productServices.addNewProduct(desktop);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//
+//    @PostMapping("/gamingConsole/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody GamingConsole gamingConsole, @PathVariable String productType) {
+//        productServices.addNewProduct(gamingConsole);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PostMapping("/tv/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody TV tv, @PathVariable String productType) {
+//        productServices.addNewProduct(tv);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PostMapping("/refrigerator/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Refrigerator refrigerator, @PathVariable String productType) {
+//        productServices.addNewProduct(refrigerator);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PostMapping("/vacuumMachine/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody VacuumMachine vacuumMachine, @PathVariable String productType) {
+//        productServices.addNewProduct(vacuumMachine);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PostMapping("/washingMachine/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody WashingMachine washingMachine, @PathVariable String productType) {
+//        productServices.addNewProduct(washingMachine);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//
+//    @PostMapping("/smartPhone/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> addNewProduct(@RequestBody SmartPhone smartPhone, @PathVariable String productType) {
+//        productServices.addNewProduct(smartPhone);
+//        return productServices.getProductsByProductType(productType);
+//    }
 
     ///////////////////////////////===================================================////////////////////////
     @DeleteMapping("/{productId}/{productType}")
@@ -116,61 +124,69 @@ public class ProductController {
     }
 
     ///////////////////////==============================update Products===================================///////////////////
-    @PutMapping("/laptop/{productType}")
+
+    @PutMapping("/{productType}")
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody Laptop laptop, @PathVariable String productType) {
-        productServices.updateProduct(laptop);
+    public ResponseEntity<List<Product>> updateProduct(@RequestBody Product product, @PathVariable String productType) {
+        productServices.updateProduct(product);
         return productServices.getProductsByProductType(productType);
     }
 
-    @PutMapping("/desktop/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody Desktop desktop, @PathVariable String productType) {
-        productServices.updateProduct(desktop);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PutMapping("/gamingConsole/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody GamingConsole gamingConsole, @PathVariable String productType) {
-        productServices.updateProduct(gamingConsole);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PutMapping("/tv/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody TV tv, @PathVariable String productType) {
-        productServices.updateProduct(tv);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PutMapping("/refrigerator/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody Refrigerator refrigerator, @PathVariable String productType) {
-        productServices.updateProduct(refrigerator);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PutMapping("/vacuumMachine/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody VacuumMachine vacuumMachine, @PathVariable String productType) {
-        productServices.updateProduct(vacuumMachine);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PutMapping("/washingMachine/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody WashingMachine washingMachine, @PathVariable String productType) {
-        productServices.updateProduct(washingMachine);
-        return productServices.getProductsByProductType(productType);
-    }
-
-    @PutMapping("/smartPhone/{productType}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody SmartPhone smartPhone, @PathVariable String productType) {
-        productServices.updateProduct(smartPhone);
-        return productServices.getProductsByProductType(productType);
-    }
+//    @PutMapping("/laptop/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody Laptop laptop, @PathVariable String productType) {
+//        productServices.updateProduct(laptop);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/desktop/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody Desktop desktop, @PathVariable String productType) {
+//        productServices.updateProduct(desktop);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/gamingConsole/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody GamingConsole gamingConsole, @PathVariable String productType) {
+//        productServices.updateProduct(gamingConsole);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/tv/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody TV tv, @PathVariable String productType) {
+//        productServices.updateProduct(tv);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/refrigerator/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody Refrigerator refrigerator, @PathVariable String productType) {
+//        productServices.updateProduct(refrigerator);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/vacuumMachine/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody VacuumMachine vacuumMachine, @PathVariable String productType) {
+//        productServices.updateProduct(vacuumMachine);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/washingMachine/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody WashingMachine washingMachine, @PathVariable String productType) {
+//        productServices.updateProduct(washingMachine);
+//        return productServices.getProductsByProductType(productType);
+//    }
+//
+//    @PutMapping("/smartPhone/{productType}")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> updateProduct(@RequestBody SmartPhone smartPhone, @PathVariable String productType) {
+//        productServices.updateProduct(smartPhone);
+//        return productServices.getProductsByProductType(productType);
+//    }
     /////////////////////////===================productType filtering by productType===============================///////////////////////////////
 
     @GetMapping("/productType/{productType}")
