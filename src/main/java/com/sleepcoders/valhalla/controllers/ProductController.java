@@ -1,6 +1,7 @@
 package com.sleepcoders.valhalla.controllers;
 
 
+import com.sleepcoders.valhalla.models.product_filtering_request.ProductFilteringRequest;
 import com.sleepcoders.valhalla.models.products.Product;
 //import com.sleepcoders.valhalla.models.products.computers.Desktop;
 //import com.sleepcoders.valhalla.models.products.computers.Laptop;
@@ -192,6 +193,26 @@ public class ProductController {
     }
 
     ///////////////////////=========================price sorting================================///////////////////////////////
+
+//    @GetMapping("/filter/{productType}")
+//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+//    public ResponseEntity<List<Product>> getProductsByFilter(@RequestParam double maxPrice,
+//                                                             @RequestParam double minPrice,
+//                                                             @RequestParam int stars,
+//                                                             @RequestParam boolean inStock, @PathVariable String productType) {
+////        return productServices.getProductsByFilter(productFilteringRequest, productType);
+////        System.out.println(maxPrice + " " + minPrice + " " + stars + " " + inStock);
+//        return null;
+//    }
+
+//TESTINGTESTINGTESING
+    @GetMapping("/filter/{productType}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+    public ResponseEntity<List<Product>> getProductsByFilter(ProductFilteringRequest productFilteringRequest, @PathVariable String productType){
+        return productServices.getProductsByFilter(productFilteringRequest, productType);
+    }
+
+
     @GetMapping("/filterPrice/Acs/{productType}/{min}/{max}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<List<Product>> getProductsByPriceAcs(@PathVariable String productType, @PathVariable double min, @PathVariable double max) {
@@ -262,18 +283,18 @@ public class ProductController {
     }
 
     /////////////////////////========================filtering by given stars number=================================///////////////////////////////
-    @GetMapping("/filterRating/{productType}/{rating}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRating(@PathVariable String productType, @PathVariable double rating) {
-        return productServices.getAllProductByProductTypeAndRating(productType, rating);
-    }
+//    @GetMapping("/filterRating/{productType}/{rating}")
+//    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRating(@PathVariable String productType, @PathVariable double rating) {
+//        return productServices.getAllProductByProductTypeAndRating(productType, rating);
+//    }
 
     /////////////////////////========================in stoke filtering=================================///////////////////////////////
-    @GetMapping("/filterInStock/{productType}")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndInStock(@PathVariable String productType) {
-        return productServices.getAllProductByProductTypeAndInStock(productType);
-    }
+//    @GetMapping("/filterInStock/{productType}")
+//    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+//    public ResponseEntity<List<Product>> getAllProductByProductTypeAndInStock(@PathVariable String productType) {
+//        return productServices.getAllProductByProductTypeAndInStock(productType);
+//    }
 
     /////////////////////////========================searchBar filtering=================================///////////////////////////////
     @GetMapping("/filterKeyWord/{keyWord}")
