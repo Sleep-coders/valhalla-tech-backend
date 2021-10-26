@@ -24,4 +24,5 @@ public class EmailController {
     public void sendEmail(@RequestBody Product product){
         emailServices.sendEmail(product);
     }
+
 }

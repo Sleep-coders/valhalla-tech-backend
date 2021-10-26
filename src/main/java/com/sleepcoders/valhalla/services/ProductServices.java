@@ -1,5 +1,6 @@
 package com.sleepcoders.valhalla.services;
 
+import com.sleepcoders.valhalla.models.product_filtering_request.ProductFilteringRequest;
 import com.sleepcoders.valhalla.models.products.Product;
 import com.sleepcoders.valhalla.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,21 @@ public class ProductServices {
 
 ///////////////////=======================================================/////////////////////////////////////////
     /////////////////////////===================productType filtering by productType===============================////////////////////////////
+
+    public ResponseEntity<List<Product>> getProductsByFilter(ProductFilteringRequest productFilteringRequest, String productType) {
+        double min = productFilteringRequest.getMinPrice();
+        double max = productFilteringRequest.getMaxPrice();
+        int rating = productFilteringRequest.getStars();
+        boolean inStock = productFilteringRequest.isInStock();
+        List<Product> productList;
+
+        if (inStock) {
+            productList =  productRepo.findAllByProductTypeAndFilterParamsInStock(productType, min, max, rating).orElse(new ArrayList<>());
+            return ResponseEntity.ok(productList);
+        }
+        productList = productRepo.findAllByProductTypeAndFilterParams(productType, min, max, rating).orElse(new ArrayList<>());
+        return ResponseEntity.ok(productList);
+    }
 
     public ResponseEntity<List<Product>> getProductsByProductType(String productType) {
         List<Product> productList = productRepo.findAllByProductType(productType).orElse(new ArrayList<>());
@@ -112,14 +128,14 @@ public class ProductServices {
 ////////////////////========================price sorting==========================////////////////////////////
 
     public ResponseEntity<List<Product>> getProductByProductTypeAndPriceAcs(String productType, double min, double max) {
-        List<Product> productList = productRepo.findAllByProductType_AndPrice(productType, min, max).orElse(new ArrayList<>());
-        productList.sort((o1,o2) -> (int) (o1.getPrice() - o2.getPrice()));
+        List<Product> productList = productRepo.findAllByProductType(productType).orElse(new ArrayList<>());
+        productList.sort((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()));
         return ResponseEntity.ok(productList);
     }
 
     public ResponseEntity<List<Product>> getProductByProductTypeAndPriceDesc(String productType, double min, double max) {
-        List<Product> productList = productRepo.findAllByProductType_AndPrice(productType, min, max).orElse(new ArrayList<>());
-        productList.sort((o1,o2) -> (int) (o2.getPrice() - o1.getPrice()));
+        List<Product> productList = productRepo.findAllByProductType(productType).orElse(new ArrayList<>());
+        productList.sort((o1, o2) -> (int) (o2.getPrice() - o1.getPrice()));
         return ResponseEntity.ok(productList);
     }
 
@@ -138,16 +154,16 @@ public class ProductServices {
     }
 
     ////////////////////========================rating from value==========================////////////////////////////
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRating(String productType, double rating) {
-        List<Product> productList = productRepo.findAllByProductTypeAndRating(productType, rating).orElse(new ArrayList<>());
-        return ResponseEntity.ok(productList);
-    }
+//    public ResponseEntity<List<Product>> getAllProductByProductTypeAndRating(String productType, double rating) {
+//        List<Product> productList = productRepo.findAllByProductTypeAndRating(productType, rating).orElse(new ArrayList<>());
+//        return ResponseEntity.ok(productList);
+//    }
     ////////////////////========================in stock filtering==========================////////////////////////////
 
-    public ResponseEntity<List<Product>> getAllProductByProductTypeAndInStock(String productType) {
-        List<Product> productList = productRepo.findAllByProductTypeAndInStock(productType).orElse(new ArrayList<>());
-        return ResponseEntity.ok(productList);
-    }
+//    public ResponseEntity<List<Product>> getAllProductByProductTypeAndInStock(String productType) {
+//        List<Product> productList = productRepo.findAllByProductTypeAndInStock(productType).orElse(new ArrayList<>());
+//        return ResponseEntity.ok(productList);
+//    }
 
     /////////////////////////========================searchBar filtering=================================///////////////////////////////
     public ResponseEntity<List<Product>> getAllProductByKeyWord(String keyWord) {
