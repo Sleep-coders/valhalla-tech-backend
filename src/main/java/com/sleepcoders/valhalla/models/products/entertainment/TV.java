@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("entertainment-tv")
-@JsonTypeName("tv")
+@JsonTypeName("entertainment-tv")
 public class TV extends Entertainment{
     private String panelSize;
     private String panelType;

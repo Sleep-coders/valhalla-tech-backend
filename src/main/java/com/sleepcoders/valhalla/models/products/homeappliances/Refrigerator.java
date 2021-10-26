@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("homeapplainces-refrigerator")
-@JsonTypeName("refrigerator")
+@DiscriminatorValue("homeappliances-refrigerator")
+@JsonTypeName("homeappliances-refrigerator")
 public class Refrigerator extends HomeAppliances {
 
     private int doorNumber;

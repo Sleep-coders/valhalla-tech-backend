@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("homeapplainces-vacuummachine")
-@JsonTypeName("vacuum")
+@DiscriminatorValue("homeappliances-vacuummachine")
+@JsonTypeName("homeappliances-vacuummachine")
 public class VacuumMachine extends HomeAppliances {
     private String airFlow;
     private String noiseLevel;

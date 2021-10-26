@@ -22,13 +22,13 @@ import java.util.Set;
         use = JsonTypeInfo.Id.NAME,
         property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Laptop.class, name = "laptop"),
-        @JsonSubTypes.Type(value = Desktop.class, name = "desktop"),
-        @JsonSubTypes.Type(value = GamingConsole.class, name = "gamingConsole"),
-        @JsonSubTypes.Type(value = TV.class, name = "tv"),
-        @JsonSubTypes.Type(value = Refrigerator.class, name = "refrigerator"),
-        @JsonSubTypes.Type(value = VacuumMachine.class, name = "vacuum"),
-        @JsonSubTypes.Type(value = WashingMachine.class, name = "washing"),
+        @JsonSubTypes.Type(value = Laptop.class, name = "computer-laptop"),
+        @JsonSubTypes.Type(value = Desktop.class, name = "computer-desktop"),
+        @JsonSubTypes.Type(value = GamingConsole.class, name = "entertainment-gamingConsole"),
+        @JsonSubTypes.Type(value = TV.class, name = "entertainment-tv"),
+        @JsonSubTypes.Type(value = Refrigerator.class, name = "homeappliances-refrigerator"),
+        @JsonSubTypes.Type(value = VacuumMachine.class, name = "homeappliances-vacuummachine"),
+        @JsonSubTypes.Type(value = WashingMachine.class, name = "homeappliances-washingmachine"),
         @JsonSubTypes.Type(value = SmartPhone.class, name = "smartphone")
 })
 @Entity

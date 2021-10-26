@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("entertainment-gamingConsole")
-@JsonTypeName("gamingConsole")
+@JsonTypeName("entertainment-gamingConsole")
 public class GamingConsole extends Entertainment{
     private int storage;
     private boolean vrSupport;

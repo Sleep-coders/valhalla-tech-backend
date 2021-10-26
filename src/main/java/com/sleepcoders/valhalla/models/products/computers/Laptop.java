@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("computer-laptop")
-@JsonTypeName("laptop")
+@JsonTypeName("computer-laptop")
 public class Laptop extends Computer {
 
     private String panelSize;
