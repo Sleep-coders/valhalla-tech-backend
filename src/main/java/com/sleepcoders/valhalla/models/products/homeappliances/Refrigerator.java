@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue("homeapplainces-refrigerator")
-@JsonTypeName("refrigerator")
+@DiscriminatorValue("homeappliances-refrigerator")
+@JsonTypeName("homeappliances-refrigerator")
 public class Refrigerator extends HomeAppliances {
 
     private int doorNumber;
@@ -20,7 +20,7 @@ public class Refrigerator extends HomeAppliances {
     public Refrigerator() {
     }
 
-    public Refrigerator(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, int doorNumber, int drawerNumber, boolean iceCrusher, boolean waterCooler, String size) {
+    public Refrigerator(int quantity, double price, double weight, String name, String description, String model, String brand, String color, int powerConsumption, int yearOfProduction, List<String> imageUrlList, int doorNumber, int drawerNumber, boolean iceCrusher, boolean waterCooler, String size) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList);
         this.doorNumber = doorNumber;
         this.drawerNumber = drawerNumber;

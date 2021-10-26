@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("computer-laptop")
-@JsonTypeName("laptop")
+@JsonTypeName("computer-laptop")
 public class Laptop extends Computer {
 
     private String panelSize;
@@ -18,7 +18,7 @@ public class Laptop extends Computer {
 
     }
 
-    public Laptop(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu, String panelSize) {
+    public Laptop(int quantity, double price, double weight, String name, String description, String model, String brand, String color, int powerConsumption, int yearOfProduction, List<String> imageUrlList, String cpu, String ram, int storage, String gpu, String panelSize) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList, cpu, ram, storage, gpu);
         this.panelSize = panelSize;
     }

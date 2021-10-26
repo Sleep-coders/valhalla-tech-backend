@@ -22,13 +22,13 @@ import java.util.Set;
         use = JsonTypeInfo.Id.NAME,
         property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Laptop.class, name = "laptop"),
-        @JsonSubTypes.Type(value = Desktop.class, name = "desktop"),
-        @JsonSubTypes.Type(value = GamingConsole.class, name = "gamingConsole"),
-        @JsonSubTypes.Type(value = TV.class, name = "tv"),
-        @JsonSubTypes.Type(value = Refrigerator.class, name = "refrigerator"),
-        @JsonSubTypes.Type(value = VacuumMachine.class, name = "vacuum"),
-        @JsonSubTypes.Type(value = WashingMachine.class, name = "washing"),
+        @JsonSubTypes.Type(value = Laptop.class, name = "computer-laptop"),
+        @JsonSubTypes.Type(value = Desktop.class, name = "computer-desktop"),
+        @JsonSubTypes.Type(value = GamingConsole.class, name = "entertainment-gamingConsole"),
+        @JsonSubTypes.Type(value = TV.class, name = "entertainment-tv"),
+        @JsonSubTypes.Type(value = Refrigerator.class, name = "homeappliances-refrigerator"),
+        @JsonSubTypes.Type(value = VacuumMachine.class, name = "homeappliances-vacuummachine"),
+        @JsonSubTypes.Type(value = WashingMachine.class, name = "homeappliances-washingmachine"),
         @JsonSubTypes.Type(value = SmartPhone.class, name = "smartphone")
 })
 @Entity
@@ -51,7 +51,7 @@ public abstract class Product {
     private String model;
     private String brand;
     private String color;
-    private String powerConsumption;
+    private int powerConsumption;
     private int yearOfProduction;
 
     @OneToMany(mappedBy = "product")
@@ -71,7 +71,7 @@ public abstract class Product {
     public Product() {
     }
 
-    public Product(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList) {
+    public Product(int quantity, double price, double weight, String name, String description, String model, String brand, String color, int powerConsumption, int yearOfProduction, List<String> imageUrlList) {
         this.quantity = quantity;
         this.price = price;
         this.weight = weight;
@@ -199,11 +199,11 @@ public abstract class Product {
         this.id = id;
     }
 
-    public String getPowerConsumption() {
+    public int getPowerConsumption() {
         return powerConsumption;
     }
 
-    public void setPowerConsumption(String powerConsumption) {
+    public void setPowerConsumption(int powerConsumption) {
         this.powerConsumption = powerConsumption;
     }
 

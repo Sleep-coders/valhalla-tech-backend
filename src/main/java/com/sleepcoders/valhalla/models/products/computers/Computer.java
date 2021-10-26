@@ -9,14 +9,14 @@ public abstract class Computer extends Product {
 
     private String cpu;
     private String ram;
-    private String storage;
+    private int storage;
     private String gpu;
 
     public Computer() {
 
     }
 
-    public Computer(int quantity, double price, double weight, String name, String description, String model, String brand, String color, String powerConsumption, int yearOfProduction, List<String> imageUrlList, String cpu, String ram, String storage, String gpu) {
+    public Computer(int quantity, double price, double weight, String name, String description, String model, String brand, String color, int powerConsumption, int yearOfProduction, List<String> imageUrlList, String cpu, String ram, int storage, String gpu) {
         super(quantity, price, weight, name, description, model, brand, color, powerConsumption, yearOfProduction, imageUrlList);
         this.cpu = cpu;
         this.ram = ram;
@@ -40,11 +40,11 @@ public abstract class Computer extends Product {
         this.ram = ram;
     }
 
-    public String getStorage() {
+    public int getStorage() {
         return storage;
     }
 
-    public void setStorage(String storage) {
+    public void setStorage(int storage) {
         this.storage = storage;
     }
 

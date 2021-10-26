@@ -10,7 +10,6 @@ import com.sleepcoders.valhalla.models.products.Product;
 //import com.sleepcoders.valhalla.models.products.homeappliances.VacuumMachine;
 //import com.sleepcoders.valhalla.models.products.homeappliances.WashingMachine;
 //import com.sleepcoders.valhalla.models.products.smartphones.SmartPhone;
-import com.sleepcoders.valhalla.repository.ProductRepo;
 import com.sleepcoders.valhalla.services.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +25,10 @@ public class ProductController {
 
 
     private final ProductServices productServices;
-    private final ProductRepo productRepo;
-
 
     @Autowired
-    public ProductController(ProductServices productServices, ProductRepo productRepo) {
+    public ProductController(ProductServices productServices) {
         this.productServices = productServices;
-        this.productRepo = productRepo;
     }
 
 
