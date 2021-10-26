@@ -194,9 +194,21 @@ public class ProductController {
 
     ///////////////////////=========================price sorting================================///////////////////////////////
 
+//    @GetMapping("/filter/{productType}")
+//    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+//    public ResponseEntity<List<Product>> getProductsByFilter(@RequestParam double maxPrice,
+//                                                             @RequestParam double minPrice,
+//                                                             @RequestParam int stars,
+//                                                             @RequestParam boolean inStock, @PathVariable String productType) {
+////        return productServices.getProductsByFilter(productFilteringRequest, productType);
+////        System.out.println(maxPrice + " " + minPrice + " " + stars + " " + inStock);
+//        return null;
+//    }
+
+//TESTINGTESTINGTESING
     @GetMapping("/filter/{productType}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-    public ResponseEntity<List<Product>> getProductsByFilter(@RequestBody ProductFilteringRequest productFilteringRequest, @PathVariable String productType){
+    public ResponseEntity<List<Product>> getProductsByFilter(ProductFilteringRequest productFilteringRequest, @PathVariable String productType){
         return productServices.getProductsByFilter(productFilteringRequest, productType);
     }
 

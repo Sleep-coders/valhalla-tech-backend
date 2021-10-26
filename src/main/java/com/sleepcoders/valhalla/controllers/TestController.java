@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @GetMapping("/all")
     public String allAccess() {
-        return "Public Content.";
+        return "Welcome to Valhalla-tech";
     }
 
     @GetMapping("/user")
@@ -27,7 +27,7 @@ public class TestController {
         return "Moderator Board.";
     }
 
-    @GetMapping("/admin")
+    @GetMapping("/admin-page")
     @PreAuthorize("hasRole('ADMIN')")
     public String adminAccess() {
         return "Admin Board.";
