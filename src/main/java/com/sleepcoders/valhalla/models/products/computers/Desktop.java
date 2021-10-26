@@ -1,5 +1,7 @@
 package com.sleepcoders.valhalla.models.products.computers;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.ArrayList;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("computer-desktop")
+@JsonTypeName("desktop")
 public class Desktop extends Computer{
 
     public Desktop() {

@@ -1,5 +1,7 @@
 package com.sleepcoders.valhalla.models.products.entertainment;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.ArrayList;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @DiscriminatorValue("entertainment-gamingConsole")
+@JsonTypeName("gamingConsole")
 public class GamingConsole extends Entertainment{
     private String storage;
     private boolean vrSupport;

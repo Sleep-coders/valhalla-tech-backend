@@ -1,11 +1,14 @@
 package com.sleepcoders.valhalla.models.products.homeappliances;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
 @Entity
 @DiscriminatorValue("homeapplainces-washingmachine")
+@JsonTypeName("washing")
 public class WashingMachine extends HomeAppliances {
     private String capacity;
 
