@@ -1,5 +1,15 @@
 package com.sleepcoders.valhalla.models.products;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.sleepcoders.valhalla.models.products.computers.Desktop;
+import com.sleepcoders.valhalla.models.products.computers.Laptop;
+import com.sleepcoders.valhalla.models.products.entertainment.GamingConsole;
+import com.sleepcoders.valhalla.models.products.entertainment.TV;
+import com.sleepcoders.valhalla.models.products.homeappliances.Refrigerator;
+import com.sleepcoders.valhalla.models.products.homeappliances.VacuumMachine;
+import com.sleepcoders.valhalla.models.products.homeappliances.WashingMachine;
+import com.sleepcoders.valhalla.models.products.smartphones.SmartPhone;
 import com.sleepcoders.valhalla.models.reviews.ProductReview;
 import com.sleepcoders.valhalla.models.users.User;
 
@@ -8,6 +18,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Laptop.class, name = "laptop"),
+        @JsonSubTypes.Type(value = Desktop.class, name = "desktop"),
+        @JsonSubTypes.Type(value = GamingConsole.class, name = "gamingConsole"),
+        @JsonSubTypes.Type(value = TV.class, name = "tv"),
+        @JsonSubTypes.Type(value = Refrigerator.class, name = "refrigerator"),
+        @JsonSubTypes.Type(value = VacuumMachine.class, name = "vacuum"),
+        @JsonSubTypes.Type(value = WashingMachine.class, name = "washing"),
+        @JsonSubTypes.Type(value = SmartPhone.class, name = "smartphone")
+})
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "product_type", discriminatorType = DiscriminatorType.STRING)

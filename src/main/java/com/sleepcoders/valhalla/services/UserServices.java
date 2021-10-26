@@ -45,12 +45,12 @@ public class UserServices {
 
     public ResponseEntity<List<Product>> confirmUserPurchases(PurchaseRequest purchaseRequest) {
         User user = userRepository.getById(purchaseRequest.getUserId());
-        user.setBalance(getRandBalance(2000, 4000));
+        user.setBalance(4000);
         List<Product> productList = new ArrayList<>();
         double totalPrice = 0.0;
 
-        for (Long productId : purchaseRequest.getProductsIds()) {
-            Product product = productRepo.getById(productId);
+        for (String productId : purchaseRequest.getProductIdProductQuantity().keySet()) {
+            Product product = productRepo.getById(Long.parseLong(productId));
             totalPrice += product.getPrice();
             productList.add(product);
         }
@@ -58,19 +58,20 @@ public class UserServices {
         if (user.getBalance() < totalPrice)
             return ResponseEntity.badRequest().body(new ArrayList<>());
 
-
+        for(String productId : purchaseRequest.getProductIdProductQuantity().keySet()){
+            Product product = productRepo.getById(Long.parseLong(productId));
+            product.setQuantity(product.getQuantity() - purchaseRequest.getProductIdProductQuantity().get(productId));
+            productRepo.save(product);
+        }
 
         productList.addAll(user.getProductList());
 
         DataStorage dataStorage = dataStorageRepo.getById(1L);
         dataStorage.setTotalOfSales(totalPrice);
         dataStorageRepo.save(dataStorage);
+        user.setBalance(user.getBalance() - totalPrice);
         user.setProductList(productList);
         return ResponseEntity.ok(productList);
-    }
-
-    private double getRandBalance(int min, int max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     public void deleteUser(Long userId) {
