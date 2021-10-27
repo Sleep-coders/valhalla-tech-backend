@@ -1,4 +1,4 @@
-package com.sleepcoders.valhalla.services;
+package com.sleepcoders.valhalla.services.implementation;
 
 import com.sleepcoders.valhalla.models.dataStorage.DataStorage;
 import com.sleepcoders.valhalla.models.products.Product;
@@ -71,6 +71,7 @@ public class UserServices {
         dataStorageRepo.save(dataStorage);
         user.setBalance(user.getBalance() - totalPrice);
         user.setProductList(productList);
+        user.setLastPayment(totalPrice);
         return ResponseEntity.ok(productList);
     }
 

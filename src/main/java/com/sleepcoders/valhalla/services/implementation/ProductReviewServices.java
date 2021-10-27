@@ -1,4 +1,4 @@
-package com.sleepcoders.valhalla.services;
+package com.sleepcoders.valhalla.services.implementation;
 
 import com.sleepcoders.valhalla.models.reviews.ProductReview;
 import com.sleepcoders.valhalla.repository.ProductReviewRepo;

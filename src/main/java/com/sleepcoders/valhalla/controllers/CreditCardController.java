@@ -1,7 +1,7 @@
 package com.sleepcoders.valhalla.controllers;
 
 import com.sleepcoders.valhalla.models.credit_card.CreditCard;
-import com.sleepcoders.valhalla.services.CreditCardServices;
+import com.sleepcoders.valhalla.services.implementation.CreditCardServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

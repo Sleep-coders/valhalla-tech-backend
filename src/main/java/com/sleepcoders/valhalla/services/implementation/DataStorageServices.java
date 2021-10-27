@@ -1,4 +1,4 @@
-package com.sleepcoders.valhalla.services;
+package com.sleepcoders.valhalla.services.implementation;
 
 import com.sleepcoders.valhalla.models.dataStorage.DataStorage;
 import com.sleepcoders.valhalla.repository.DataStorageRepo;
@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataStorageServices {
 
+    private final DataStorageRepo dataStorageRepo;
+
     @Autowired
-    DataStorageRepo dataStorageRepo;
+    public DataStorageServices(DataStorageRepo dataStorageRepo) {
+        this.dataStorageRepo = dataStorageRepo;
+    }
 
-
-
-    public ResponseEntity<DataStorage> getDataStorage (){
+    public ResponseEntity<DataStorage> getDataStorage() {
         DataStorage dataStorage = dataStorageRepo.getById(1L);
         return ResponseEntity.ok(dataStorage);
     }

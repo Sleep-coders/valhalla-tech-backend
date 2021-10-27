@@ -42,6 +42,7 @@ public class User {
     private String lastName;
     private String imageUrl;
     private double balance;
+    private double lastPayment;
 
     @ManyToMany
     @JoinTable(name = "user_product_list",
@@ -74,6 +75,7 @@ public class User {
         this.lastName = lastName;
         this.imageUrl = imageUrl;
         this.balance = 0.0;
+        this.lastPayment = 0.0;
         this.productList = new ArrayList<>();
         this.productReviews = new HashSet<>();
         this.roles = new HashSet<>();
@@ -173,5 +175,13 @@ public class User {
 
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
+    }
+
+    public double getLastPayment() {
+        return lastPayment;
+    }
+
+    public void setLastPayment(double lastPayment) {
+        this.lastPayment = lastPayment;
     }
 }
