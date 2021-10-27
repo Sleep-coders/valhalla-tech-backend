@@ -31,16 +31,19 @@ public class ProductServices {
         return ResponseEntity.ok(product);
     }
 
-    public void addNewProduct(Product product) {
+    public ResponseEntity<List<Product>> addNewProduct(Product product) {
         productRepo.save(product);
+        return ResponseEntity.ok(productRepo.findAll());
     }
 
-    public void removeProduct(Long productId) {
+    public ResponseEntity<List<Product>> removeProduct(Long productId) {
         productRepo.deleteById(productId);
+        return ResponseEntity.ok(productRepo.findAll());
     }
 
-    public void updateProduct(Product product) {
+    public ResponseEntity<List<Product>> updateProduct(Product product) {
         productRepo.save(product);
+        return ResponseEntity.ok(productRepo.findAll());
     }
 
 ///////////////////=======================================================/////////////////////////////////////////

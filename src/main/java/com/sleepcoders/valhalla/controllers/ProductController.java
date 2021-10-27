@@ -38,28 +38,25 @@ public class ProductController {
 
     ///////////////////////==============Different Products Endpoints============///////////////
 
-    @PostMapping("/{productType}")
+    @PostMapping
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Product product, @PathVariable String productType) {
-        productServices.addNewProduct(product);
-        return productServices.getProductsByProductType(productType);
+    public ResponseEntity<List<Product>> addNewProduct(@RequestBody Product product) {
+        return productServices.addNewProduct(product);
     }
 
     ///////////////////////////////===================================================////////////////////////
-    @DeleteMapping("/{productId}/{productType}")
+    @DeleteMapping("/{productId}")
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> removeProduct(@PathVariable Long productId, @PathVariable String productType) {
-        productServices.removeProduct(productId);
-        return productServices.getProductsByProductType(productType);
+    public ResponseEntity<List<Product>> removeProduct(@PathVariable Long productId) {
+       return productServices.removeProduct(productId);
     }
 
     ///////////////////////==============================update Products===================================///////////////////
 
-    @PutMapping("/{productType}")
+    @PutMapping
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<List<Product>> updateProduct(@RequestBody Product product, @PathVariable String productType) {
-        productServices.updateProduct(product);
-        return productServices.getProductsByProductType(productType);
+    public ResponseEntity<List<Product>> updateProduct(@RequestBody Product product) {
+        return productServices.updateProduct(product);
     }
 
     /////////////////////////===================productType filtering by productType===============================///////////////////////////////

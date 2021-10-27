@@ -1,12 +1,10 @@
 package com.sleepcoders.valhalla.controllers;
 
 import com.sleepcoders.valhalla.models.products.Product;
-import com.sleepcoders.valhalla.repository.UserRepository;
 import com.sleepcoders.valhalla.services.implementation.EmailServicesImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -15,12 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class EmailController {
 
     private final EmailServicesImp emailServicesImp;
-    private final UserRepository userRepository;
 
     @Autowired
-    public EmailController(EmailServicesImp emailServicesImp, UserRepository userRepository) {
+    public EmailController(EmailServicesImp emailServicesImp) {
         this.emailServicesImp = emailServicesImp;
-        this.userRepository = userRepository;
     }
 
 
