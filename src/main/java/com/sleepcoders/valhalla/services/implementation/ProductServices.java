@@ -58,9 +58,12 @@ public class ProductServices {
 
         if (inStock) {
             productList = productRepo.findAllByProductTypeAndFilterParamsInStock(productType, min, max, rating).orElse(new ArrayList<>());
+            System.out.println("Response"+ productList);
             return ResponseEntity.ok(productList);
         }
         productList = productRepo.findAllByProductTypeAndFilterParams(productType, min, max, rating).orElse(new ArrayList<>());
+        System.out.println("Response"+ productList);
+
         return ResponseEntity.ok(productList);
     }
 
