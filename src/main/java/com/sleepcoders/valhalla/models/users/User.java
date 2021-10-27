@@ -184,4 +184,23 @@ public class User {
     public void setLastPayment(double lastPayment) {
         this.lastPayment = lastPayment;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", balance=" + balance +
+                ", lastPayment=" + lastPayment +
+                ", productList=" + productList +
+                ", productReviews=" + productReviews +
+                ", creditCard=" + creditCard +
+                ", roles=" + roles +
+                '}';
+    }
 }

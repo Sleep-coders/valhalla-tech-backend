@@ -1,5 +1,6 @@
 package com.sleepcoders.valhalla.models.user_purchases_request;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class PurchaseRequest {
@@ -41,6 +42,15 @@ public class PurchaseRequest {
 
     public void setProductsQuantity(int[] productsQuantity) {
         this.productsQuantity = productsQuantity;
+    }
+
+    @Override
+    public String toString() {
+        return "PurchaseRequest{" +
+                "userId=" + userId +
+                ", productsIds=" + Arrays.toString(productsIds) +
+                ", productsQuantity=" + Arrays.toString(productsQuantity) +
+                '}';
     }
 }
 

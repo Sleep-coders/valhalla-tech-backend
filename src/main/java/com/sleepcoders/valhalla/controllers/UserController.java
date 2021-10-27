@@ -43,6 +43,7 @@ public class UserController {
     @PostMapping("/purchases")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<Product>> confirmUserPurchases(@RequestBody PurchaseRequest purchaseRequest){
+        System.out.println(purchaseRequest);
         return userServices.confirmUserPurchases(purchaseRequest);
     }
 
