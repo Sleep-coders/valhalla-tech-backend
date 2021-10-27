@@ -5,17 +5,14 @@ import java.util.Map;
 public class PurchaseRequest {
 
     private Long userId;
-    private Map<String, Integer> productIdProductQuantity;
-//    private Long[] productsIds;
-//    private Long[] productsQuantity;
+//    private Map<String, Integer> productIdProductQuantity;
+    private Long[] productsIds;
+    private int[] productsQuantity;
 
     public PurchaseRequest() {
     }
 
-    public PurchaseRequest(Long userId, Map<String, Integer> productIdProductQuantity) {
-        this.userId = userId;
-        this.productIdProductQuantity = productIdProductQuantity;
-    }
+
 
     public Long getUserId() {
         return userId;
@@ -25,28 +22,25 @@ public class PurchaseRequest {
         this.userId = userId;
     }
 
-    public Map<String, Integer> getProductIdProductQuantity() {
-        return productIdProductQuantity;
+    public PurchaseRequest(Long[] productsIds, int[] productsQuantity) {
+        this.productsIds = productsIds;
+        this.productsQuantity = productsQuantity;
     }
 
-    public void setProductIdProductQuantity(Map<String, Integer> productIdProductQuantity) {
-        this.productIdProductQuantity = productIdProductQuantity;
+    public Long[] getProductsIds() {
+        return productsIds;
     }
 
-//    public Long[] getProductsIds() {
-//        return productsIds;
-//    }
-//
-//    public void setProductsIds(Long[] productsIds) {
-//        this.productsIds = productsIds;
-//    }
-//
-//    public Long[] getProductsQuantity() {
-//        return productsQuantity;
-//    }
-//
-//    public void setProductsQuantity(Long[] productsQuantity) {
-//        this.productsQuantity = productsQuantity;
-//    }
+    public void setProductsIds(Long[] productsIds) {
+        this.productsIds = productsIds;
+    }
+
+    public int[] getProductsQuantity() {
+        return productsQuantity;
+    }
+
+    public void setProductsQuantity(int[] productsQuantity) {
+        this.productsQuantity = productsQuantity;
+    }
 }
 

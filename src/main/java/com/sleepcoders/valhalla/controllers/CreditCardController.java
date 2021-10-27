@@ -28,6 +28,7 @@ public class CreditCardController {
     @PostMapping
     @PreAuthorize("hasRole('USER')")
     public CreditCard addUserCreditCard(@RequestBody CreditCard creditCard) {
+        System.out.println(creditCard);
         return creditCardServices.addUserCreditCard(creditCard);
     }
 
