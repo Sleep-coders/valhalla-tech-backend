@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -71,8 +72,12 @@ public class ProductController {
 
     @GetMapping("/filter/{productType}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
-    public ResponseEntity<List<Product>> getProductsByFilter(ProductFilteringRequest productFilteringRequest, @PathVariable String productType){
-        return productServices.getProductsByFilter(productFilteringRequest, productType);
+    public ResponseEntity<List<Product>> getProductsByFilter(@RequestParam double minPrice, @RequestParam double maxPrice,@RequestParam int stars,@RequestParam boolean inStock, @PathVariable String productType){
+//        return ResponseEntity.ok(new ArrayList<>());
+        ProductFilteringRequest productFiltered= new ProductFilteringRequest(maxPrice,minPrice,stars,inStock);
+        return productServices.getProductsByFilter(productFiltered, productType);
+
+
     }
 
     @GetMapping("/filterPrice/Acs/{productType}")

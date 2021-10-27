@@ -47,4 +47,14 @@ public class ProductFilteringRequest {
     public void setInStock(boolean inStock) {
         this.inStock = inStock;
     }
+
+    @Override
+    public String toString() {
+        return "ProductFilteringRequest{" +
+                "maxPrice=" + maxPrice +
+                ", minPrice=" + minPrice +
+                ", stars=" + stars +
+                ", inStock=" + inStock +
+                '}';
+    }
 }
