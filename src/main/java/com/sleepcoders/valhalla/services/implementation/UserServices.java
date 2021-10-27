@@ -45,12 +45,14 @@ public class UserServices {
 
     public ResponseEntity<List<Product>> confirmUserPurchases(PurchaseRequest purchaseRequest) {
         User user = userRepository.getById(purchaseRequest.getUserId());
+        Long[] productsIds = purchaseRequest.getProductsIds();
+        int[] productsQuantity = purchaseRequest.getProductsQuantity();
         user.setBalance(4000);
         List<Product> productList = new ArrayList<>();
         double totalPrice = 0.0;
 
-        for (String productId : purchaseRequest.getProductIdProductQuantity().keySet()) {
-            Product product = productRepo.getById(Long.parseLong(productId));
+        for (Long productId :productsIds ) {
+            Product product = productRepo.getById(productId);
             totalPrice += product.getPrice();
             productList.add(product);
         }
@@ -58,9 +60,9 @@ public class UserServices {
         if (user.getBalance() < totalPrice)
             return ResponseEntity.badRequest().body(new ArrayList<>());
 
-        for(String productId : purchaseRequest.getProductIdProductQuantity().keySet()){
-            Product product = productRepo.getById(Long.parseLong(productId));
-            product.setQuantity(product.getQuantity() - purchaseRequest.getProductIdProductQuantity().get(productId));
+        for(int i=0; i<productsIds.length; i++){
+            Product product = productRepo.getById(productsIds[i]);
+            product.setQuantity(product.getQuantity() - productsQuantity[i]);
             productRepo.save(product);
         }
 

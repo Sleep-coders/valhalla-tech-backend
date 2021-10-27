@@ -81,4 +81,16 @@ public class CreditCard {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "id=" + id +
+                ", creditCardNumber=" + creditCardNumber +
+                ", cvv='" + cvv + '\'' +
+                ", expDate='" + expDate + '\'' +
+                ", creditCardOwnerName='" + creditCardOwnerName + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
