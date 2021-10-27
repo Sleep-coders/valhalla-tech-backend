@@ -1,7 +1,7 @@
 package com.sleepcoders.valhalla.controllers;
 
 import com.sleepcoders.valhalla.models.reviews.ProductReview;
-import com.sleepcoders.valhalla.services.ProductReviewServices;
+import com.sleepcoders.valhalla.services.implementation.ProductReviewServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

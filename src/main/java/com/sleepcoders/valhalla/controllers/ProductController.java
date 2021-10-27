@@ -2,7 +2,7 @@ package com.sleepcoders.valhalla.controllers;
 
 import com.sleepcoders.valhalla.models.product_filtering_request.ProductFilteringRequest;
 import com.sleepcoders.valhalla.models.products.Product;
-import com.sleepcoders.valhalla.services.ProductServices;
+import com.sleepcoders.valhalla.services.implementation.ProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

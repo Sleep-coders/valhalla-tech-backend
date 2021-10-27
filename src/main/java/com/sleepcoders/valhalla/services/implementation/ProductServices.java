@@ -1,4 +1,4 @@
-package com.sleepcoders.valhalla.services;
+package com.sleepcoders.valhalla.services.implementation;
 
 import com.sleepcoders.valhalla.models.product_filtering_request.ProductFilteringRequest;
 import com.sleepcoders.valhalla.models.products.Product;

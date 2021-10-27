@@ -5,7 +5,7 @@ import com.sleepcoders.valhalla.models.products.Product;
 import com.sleepcoders.valhalla.models.user_purchases_request.PurchaseRequest;
 import com.sleepcoders.valhalla.models.users.User;
 import com.sleepcoders.valhalla.repository.DataStorageRepo;
-import com.sleepcoders.valhalla.services.UserServices;
+import com.sleepcoders.valhalla.services.implementation.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
