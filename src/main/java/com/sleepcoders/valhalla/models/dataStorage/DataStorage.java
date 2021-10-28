@@ -35,6 +35,7 @@ public class DataStorage {
         return totalOfSales;
     }
 
+
     public void setCountOfUsers(int num) {
         this.countOfUsers +=num;
     }

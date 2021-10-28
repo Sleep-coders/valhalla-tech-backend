@@ -17,7 +17,7 @@ public class DataStorageServices {
     }
 
     public ResponseEntity<DataStorage> getDataStorage() {
-        DataStorage dataStorage = dataStorageRepo.getById(1L);
+        DataStorage dataStorage = dataStorageRepo.findById(1L).orElseThrow();
         return ResponseEntity.ok(dataStorage);
     }
 }
