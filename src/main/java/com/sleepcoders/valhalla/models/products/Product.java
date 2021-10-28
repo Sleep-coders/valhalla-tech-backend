@@ -1,5 +1,6 @@
 package com.sleepcoders.valhalla.models.products;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.sleepcoders.valhalla.models.products.computers.Desktop;
@@ -57,6 +58,7 @@ public abstract class Product {
     @OneToMany(mappedBy = "product")
     private Set<ProductReview> productReviewList;
 
+    @JsonIgnore  // CYCLING REDUNDANCY FIX USING THIS ANNOTATION
     @ManyToMany(mappedBy = "productList")
     private Set<User> users;
 

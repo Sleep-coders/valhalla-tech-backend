@@ -43,9 +43,16 @@ public class UserServices {
         return ResponseEntity.ok(users);
     }
 
-    public ResponseEntity<List<Product>> confirmUserPurchases(PurchaseRequest purchaseRequest) {
-        System.out.println("purchase "+purchaseRequest.getUserId());
-        System.out.println("users "+userRepository.findAll());
+    public ResponseEntity<List<Product>> getPurchasesHistory(Long userId){
+        User user = userRepository.findById(userId).orElse(null);
+        System.out.println(user);
+        assert user != null;
+        return ResponseEntity.ok(user.getProductList());
+    }
+
+    public void confirmUserPurchases(PurchaseRequest purchaseRequest) {
+        System.out.println("purchase " + purchaseRequest.getUserId());
+        System.out.println("users " + userRepository.findAll());
 
         User user = userRepository.findById(purchaseRequest.getUserId()).orElse(null);
         System.out.println(user);
@@ -55,16 +62,16 @@ public class UserServices {
         List<Product> productList = new ArrayList<>();
         double totalPrice = 0.0;
 
-        for (Long productId :productsIds ) {
+        for (Long productId : productsIds) {
             Product product = productRepo.findById(productId).orElse(null);
             totalPrice += product.getPrice();
             productList.add(product);
         }
 
         if (user.getBalance() < totalPrice)
-            return ResponseEntity.badRequest().body(new ArrayList<>());
+            return;
 
-        for(int i=0; i<productsIds.length; i++){
+        for (int i = 0; i < productsIds.length; i++) {
             Product product = productRepo.findById(productsIds[i]).orElse(null);
             product.setQuantity(product.getQuantity() - productsQuantity[i]);
             productRepo.save(product);
@@ -78,7 +85,7 @@ public class UserServices {
         user.setBalance(user.getBalance() - totalPrice);
         user.setProductList(productList);
         user.setLastPayment(totalPrice);
-        return ResponseEntity.ok(productList);
+        userRepository.save(user);
     }
 
     public void deleteUser(Long userId) {

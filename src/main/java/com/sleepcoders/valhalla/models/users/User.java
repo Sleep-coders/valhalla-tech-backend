@@ -197,7 +197,7 @@ public class User {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", balance=" + balance +
                 ", lastPayment=" + lastPayment +
-                ", productList=" + productList +
+//                ", productList=" + productList +
                 ", productReviews=" + productReviews +
                 ", creditCard=" + creditCard +
                 ", roles=" + roles +

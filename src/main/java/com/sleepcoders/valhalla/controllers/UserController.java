@@ -40,11 +40,17 @@ public class UserController {
         return userServices.getAllUsers();
     }
 
+    @GetMapping("purchases/{userId}")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN') or hasRole('USER')")
+    public ResponseEntity<List<Product>> getPurchasesHistory(@PathVariable Long userId){
+        return userServices.getPurchasesHistory(userId);
+    }
+
+
     @PostMapping("/purchases")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<List<Product>> confirmUserPurchases(@RequestBody PurchaseRequest purchaseRequest){
-        System.out.println(purchaseRequest);
-        return userServices.confirmUserPurchases(purchaseRequest);
+    public void confirmUserPurchases(@RequestBody PurchaseRequest purchaseRequest){
+        userServices.confirmUserPurchases(purchaseRequest);
     }
 
     @DeleteMapping("/{userId}")
