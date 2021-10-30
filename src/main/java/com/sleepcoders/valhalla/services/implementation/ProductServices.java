@@ -162,6 +162,7 @@ public class ProductServices {
     /////////////////////////========================searchBar filtering=================================///////////////////////////////
     public ResponseEntity<List<Product>> getAllProductByKeyWord(String keyWord) {
         List<Product> productList = productRepo.findAllBySearchKeyWord(keyWord).orElse(new ArrayList<>());
+//        List<Product> productList = productRepo.findAllByNameContainsAndDescriptionContainsAndBrandContainsAndModelContains(keyWord,keyWord,keyWord,keyWord).orElse(new ArrayList<>());
         return ResponseEntity.ok(productList);
     }
 }
