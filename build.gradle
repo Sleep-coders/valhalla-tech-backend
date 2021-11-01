@@ -12,6 +12,11 @@ repositories {
 	mavenCentral()
 }
 
+bootJar {
+	baseName = "SpringBoot"
+	version =  '0.0.1'
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
